@@ -75,6 +75,15 @@ create table Seguridad.Usuario
 	deleted_at datetime null
 )
 
+ALTER TABLE Academico.Estudiante
+	add created_at datetime not null default sysdatetime(),
+	updated_at datetime null,
+	deleted_at datetime null,
+	constraint UQ_Estudiante_cif unique (cif),
+	constraint UQ_Estudiante_mail unique (mail),
+	constraint FK_Estudiante_Carrera foreign key (IdCarrera) references Academico.Carrera(IdCarrera)
+
+
 
 
 
