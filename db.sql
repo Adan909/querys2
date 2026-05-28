@@ -83,6 +83,20 @@ ALTER TABLE Academico.Estudiante
 	constraint UQ_Estudiante_mail unique (mail),
 	constraint FK_Estudiante_Carrera foreign key (IdCarrera) references Academico.Carrera(IdCarrera)
 
+	go
+
+ALTER TABLE Academico.Carrera
+	add constraint CK_Carrera_Precio CHECK (Precio > 0),
+	
+	constraint CK_Carrera_UpdatedAt CHECK (updated_at > created_at),
+	constraint CK_Carrera_DeletedAt CHECK (deleted_at > created_at)
+
+
+	go
+
+ALTER TABLE Seguridad.Usuario
+	add constraint CK_Usuario_pw CHECK (LEN(pw) >= 8)
+go
 
 
 
